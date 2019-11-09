@@ -2,6 +2,7 @@ package com.squaddois.centralerros.service;
 
 import com.squaddois.centralerros.dto.ErrorDTO;
 import com.squaddois.centralerros.mapper.ErrorMapper;
+import com.squaddois.centralerros.model.Environment;
 import com.squaddois.centralerros.model.Error;
 import com.squaddois.centralerros.repository.ErrorRepository;
 import org.hibernate.ObjectNotFoundException;
@@ -27,6 +28,10 @@ public class ErrorService {
 
     public List<ErrorDTO> findAllErrors() {
         return ErrorMapper.toListErrorDTO(errorRepository.findAll());
+    }
+
+    public List<ErrorDTO> findErrorByEnviroment(Environment environment) {
+        return ErrorMapper.toListErrorDTO(errorRepository.findErrorByEnvironment(environment));
     }
 
     public void saveError(ErrorDTO errorDTO) {
