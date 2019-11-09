@@ -1,5 +1,5 @@
 package com.squaddois.centralerros.model;
 
-public enum Level {
+public enum ErrorType {
     ERROR, WARNING, DEBUG
 }

@@ -6,27 +6,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
-public class User {
+public class Log {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
     @NotEmpty
-    private String name;
+    private String ip;
     @NotEmpty
-    private String lastName;
+    private LocalDateTime createdAt;
     @NotEmpty
-    @Email
-    private String email;
-    @NotEmpty
-    private String password;
-    @NotEmpty
-    private String token;
-
-    public User() {
-    }
+    private String description;
 }
