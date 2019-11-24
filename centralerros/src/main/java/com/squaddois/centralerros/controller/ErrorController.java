@@ -32,8 +32,8 @@ public class ErrorController {
     public ResponseEntity<List<ErrorDTO>> findAllErrors() {
         return new ResponseEntity<>(errorService.findAllErrors(), HttpStatus.OK);
     }
-    @GetMapping("/findByEnvironment2/{Environment}")
-    public ResponseEntity<List<ErrorDTO>> findAllErrorsByEnvironment2(@PathVariable Environment environment) {
+    @GetMapping("/findByEnvironment/{environment}")
+    public ResponseEntity<List<ErrorDTO>> findAllErrorsByEnvironment(@PathVariable Environment environment) {
         return new ResponseEntity<>(errorService.findErrorByEnviroment(environment), HttpStatus.OK);
     }
 
