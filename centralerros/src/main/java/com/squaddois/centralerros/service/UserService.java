@@ -1,5 +1,6 @@
 package com.squaddois.centralerros.service;
 
+import com.squaddois.centralerros.config.Encoder;
 import com.squaddois.centralerros.dto.UserDTO;
 import com.squaddois.centralerros.mapper.UserMapper;
 import com.squaddois.centralerros.model.User;
@@ -13,10 +14,12 @@ import java.util.List;
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final Encoder encoder;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, Encoder encoder) {
         this.userRepository = userRepository;
+        this.encoder = encoder;
     }
 
     public UserDTO findUser(Long id) {
@@ -29,6 +32,7 @@ public class UserService {
     }
 
     public void saveUser(UserDTO userDTO) {
+        userDTO.setPassword(encoder.passwordEncoder().encode(userDTO.getPassword()));
         userRepository.save(UserMapper.toUser(userDTO));
     }
 

@@ -10,8 +10,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
@@ -27,23 +25,20 @@ public class WebSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    public void authenticationManager(AuthenticationManagerBuilder builder, UserRepository userRepository)
+    public void authenticationManager(AuthenticationManagerBuilder builder, UserRepository userRepository, Encoder encoder)
             throws Exception {
         if (userRepository.count() == 0) {
             User user = new User();
             user.setEmail("admin@admin.com");
-            user.setPassword("admin");
+            user.setPassword(encoder.passwordEncoder().encode("admin"));
             user.setName("Admin");
             user.setLastName("Teste");
             user.setToken("jhfkahfkh");
             userRepository.save(user);
         }
 
-        builder.userDetailsService(email -> new UserCustomDTO(userRepository.findByEmail(email)));
+        builder.userDetailsService(email -> new UserCustomDTO(userRepository.findByEmail(email)))
+                .passwordEncoder(encoder.passwordEncoder());
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder(){
-        return NoOpPasswordEncoder.getInstance();
-    }
 }
