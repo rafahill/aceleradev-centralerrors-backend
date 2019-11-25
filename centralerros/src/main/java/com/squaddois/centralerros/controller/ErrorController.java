@@ -1,13 +1,11 @@
 package com.squaddois.centralerros.controller;
 
 import com.squaddois.centralerros.dto.ErrorDTO;
-import com.squaddois.centralerros.model.Environment;
+import com.squaddois.centralerros.entity.Environment;
 import com.squaddois.centralerros.service.ErrorService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

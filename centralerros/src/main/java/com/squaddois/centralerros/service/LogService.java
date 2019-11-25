@@ -2,9 +2,8 @@ package com.squaddois.centralerros.service;
 
 
 import com.squaddois.centralerros.dto.LogDTO;
-import com.squaddois.centralerros.mapper.ErrorMapper;
 import com.squaddois.centralerros.mapper.LogMapper;
-import com.squaddois.centralerros.model.Log;
+import com.squaddois.centralerros.entity.Log;
 import com.squaddois.centralerros.repository.LogRepository;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
