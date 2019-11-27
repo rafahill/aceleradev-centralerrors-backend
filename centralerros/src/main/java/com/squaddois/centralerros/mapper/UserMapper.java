@@ -1,7 +1,7 @@
 package com.squaddois.centralerros.mapper;
 
 import com.squaddois.centralerros.dto.UserDTO;
-import com.squaddois.centralerros.model.User;
+import com.squaddois.centralerros.entity.User;
 
 import java.util.List;
 import java.util.stream.Collectors;

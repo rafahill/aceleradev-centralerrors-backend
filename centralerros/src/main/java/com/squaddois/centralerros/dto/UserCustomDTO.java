@@ -1,6 +1,6 @@
 package com.squaddois.centralerros.dto;
 
-import com.squaddois.centralerros.model.User;
+import com.squaddois.centralerros.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 
 import org.springframework.security.core.userdetails.UserDetails;

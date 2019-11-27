@@ -1,7 +1,7 @@
 package com.squaddois.centralerros.config;
 
 import com.squaddois.centralerros.dto.UserCustomDTO;
-import com.squaddois.centralerros.model.User;
+import com.squaddois.centralerros.entity.User;
 import com.squaddois.centralerros.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

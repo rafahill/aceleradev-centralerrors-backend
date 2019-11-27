@@ -1,4 +1,4 @@
-package com.squaddois.centralerros.model;
+package com.squaddois.centralerros.entity;
 
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
