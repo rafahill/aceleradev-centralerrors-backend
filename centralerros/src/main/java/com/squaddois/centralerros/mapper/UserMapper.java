@@ -19,7 +19,7 @@ public class UserMapper {
         userDTO.setLastName(user.getLastName());
         userDTO.setName(user.getName());
         userDTO.setPassword(user.getPassword());
-        userDTO.setToken(user.getToken());
+        userDTO.setCreatedAt(user.getCreatedAt());
         return userDTO;
     }
     public static User toUser(UserDTO userDTO) {
@@ -29,7 +29,7 @@ public class UserMapper {
         user.setLastName(userDTO.getLastName());
         user.setName(userDTO.getName());
         user.setPassword(userDTO.getPassword());
-        user.setToken(userDTO.getToken());
+        user.setCreatedAt(userDTO.getCreatedAt());
         return user;
     }
 

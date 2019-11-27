@@ -1,7 +1,6 @@
 package com.squaddois.centralerros.entity;
 
 import lombok.Data;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,11 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
 
 @Entity
 @Data
-public class Error {
+public class Error extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -26,9 +24,6 @@ public class Error {
     private ErrorType errorType;
     @NotNull
     private Environment environment;
-
-    @CreatedDate
-    private LocalDateTime createdAt;
 
     public Error() {
     }

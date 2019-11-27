@@ -15,23 +15,23 @@ public class ErrorMapper {
     public static ErrorDTO toErrorDTO(Error error) {
         ErrorDTO errorDTO = new ErrorDTO();
         errorDTO.setId(error.getId());
-        errorDTO.setCreatedAt(error.getCreatedAt());
         errorDTO.setDetails(error.getDetails());
         errorDTO.setEnvironment(error.getEnvironment());
         errorDTO.setErrorType(error.getErrorType());
         errorDTO.setHostname(error.getHostname());
         errorDTO.setTitle(error.getTitle());
+        errorDTO.setCreatedAt(error.getCreatedAt());
         return errorDTO;
     }
     public static Error toError(ErrorDTO errorDTO) {
         Error error = new Error();
         error.setId(errorDTO.getId());
-        error.setCreatedAt(errorDTO.getCreatedAt());
         error.setDetails(errorDTO.getDetails());
         error.setEnvironment(errorDTO.getEnvironment());
         error.setErrorType(errorDTO.getErrorType());
         error.setHostname(errorDTO.getHostname());
         error.setTitle(errorDTO.getTitle());
+        error.setCreatedAt(errorDTO.getCreatedAt());
         return error;
     }
 

@@ -34,7 +34,6 @@ public class WebSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
             user.setPassword(encoder.passwordEncoder().encode("admin"));
             user.setName("Admin");
             user.setLastName("Teste");
-            user.setToken("jhfkahfkh");
             userRepository.save(user);
         }
 

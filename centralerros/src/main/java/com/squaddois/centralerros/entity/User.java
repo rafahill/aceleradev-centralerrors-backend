@@ -11,7 +11,7 @@ import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Data
-public class User {
+public class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -24,8 +24,6 @@ public class User {
     private String email;
     @NotEmpty
     private String password;
-    @NotEmpty
-    private String token;
 
     public User() {
     }
