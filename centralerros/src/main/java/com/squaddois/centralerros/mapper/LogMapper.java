@@ -1,7 +1,7 @@
 package com.squaddois.centralerros.mapper;
 
 import com.squaddois.centralerros.dto.LogDTO;
-import com.squaddois.centralerros.model.Log;
+import com.squaddois.centralerros.entity.Log;
 
 import java.util.List;
 import java.util.stream.Collectors;

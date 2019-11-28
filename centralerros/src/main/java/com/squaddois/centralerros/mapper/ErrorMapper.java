@@ -1,7 +1,7 @@
 package com.squaddois.centralerros.mapper;
 
 import com.squaddois.centralerros.dto.ErrorDTO;
-import com.squaddois.centralerros.model.Error;
+import com.squaddois.centralerros.entity.Error;
 
 import java.util.List;
 import java.util.stream.Collectors;

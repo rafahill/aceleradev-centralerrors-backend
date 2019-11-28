@@ -1,11 +1,11 @@
 package com.squaddois.centralerros.controller;
 
+import com.auth0.Auth0;
 import com.squaddois.centralerros.dto.UserDTO;
 import com.squaddois.centralerros.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

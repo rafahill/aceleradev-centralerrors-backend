@@ -3,7 +3,7 @@ package com.squaddois.centralerros.service;
 import com.squaddois.centralerros.config.Encoder;
 import com.squaddois.centralerros.dto.UserDTO;
 import com.squaddois.centralerros.mapper.UserMapper;
-import com.squaddois.centralerros.model.User;
+import com.squaddois.centralerros.entity.User;
 import com.squaddois.centralerros.repository.UserRepository;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

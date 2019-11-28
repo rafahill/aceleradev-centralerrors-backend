@@ -1,6 +1,6 @@
 package com.squaddois.centralerros.repository;
 
-import com.squaddois.centralerros.model.User;
+import com.squaddois.centralerros.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
