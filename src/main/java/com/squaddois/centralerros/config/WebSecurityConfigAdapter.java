@@ -46,6 +46,7 @@ public class WebSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("/v2/api-docs",
                 "/h2-console/**",
                 "/configuration/ui",
+                "/h2-console/**",
                 "/swagger-resources/**",
                 "/configuration/security",
                 "/swagger-ui.html",
