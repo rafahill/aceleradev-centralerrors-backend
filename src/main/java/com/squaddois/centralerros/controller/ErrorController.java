@@ -1,6 +1,7 @@
 package com.squaddois.centralerros.controller;
 
 import com.squaddois.centralerros.dto.ErrorDTO;
+import com.squaddois.centralerros.dto.ErrorReducedDTO;
 import com.squaddois.centralerros.entity.Environment;
 import com.squaddois.centralerros.service.ErrorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,22 +28,22 @@ public class ErrorController {
     }
 
     @GetMapping("/findAll")
-    public ResponseEntity<List<ErrorDTO>> findAllErrors() {
+    public ResponseEntity<List<ErrorReducedDTO>> findAllErrors() {
         return new ResponseEntity<>(errorService.findAllErrors(), HttpStatus.OK);
     }
 
     @GetMapping("/findAllByEnvironment/{environment}")
-    public ResponseEntity<List<ErrorDTO>> findAllErrorsByEnvironment(@PathVariable Environment environment) {
-        return new ResponseEntity<>(errorService.findErrorByEnviroment(environment), HttpStatus.OK);
+    public ResponseEntity<List<ErrorReducedDTO>> findAllErrorsByEnvironment(@PathVariable Environment environment) {
+        return new ResponseEntity<>(errorService.findErrorsByEnviroment(environment), HttpStatus.OK);
     }
 
     @GetMapping("/findAllByArchived/{archived}")
-    public ResponseEntity<List<ErrorDTO>> findAllErrorsByArchived(@PathVariable Boolean archived) {
+    public ResponseEntity<List<ErrorReducedDTO>> findAllErrorsByArchived(@PathVariable Boolean archived) {
         return new ResponseEntity<>(errorService.findErrorsByArchived(archived), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/findErrorsBy", params = {"environment", "archived"})
-    public ResponseEntity<List<ErrorDTO>> findErrorsBy(@RequestParam Environment environment, @RequestParam Boolean archived) {
+    public ResponseEntity<List<ErrorReducedDTO>> findErrorsBy(@RequestParam Environment environment, @RequestParam Boolean archived) {
         return new ResponseEntity<>(errorService.findErrorsByEnvironmentAndArchived(environment, archived), HttpStatus.OK);
     }
 

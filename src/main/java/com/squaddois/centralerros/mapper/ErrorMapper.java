@@ -67,7 +67,7 @@ public class ErrorMapper {
         return errors.stream().map(ErrorMapper::toErrorReducedDTO).collect(Collectors.toList());
     }
 
-    public static List<Error> fromReducedDTOtoListErrors(List<ErrorReducedDTO> errorDTOS) {
-        return errorDTOS.stream().map(ErrorMapper::fromReducedDTOtoError).collect(Collectors.toList());
+    public static List<Error> fromReducedDTOtoListErrors(List<ErrorReducedDTO> errorReducedDTOS) {
+        return errorReducedDTOS.stream().map(ErrorMapper::fromReducedDTOtoError).collect(Collectors.toList());
     }
 }

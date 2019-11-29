@@ -1,6 +1,7 @@
 package com.squaddois.centralerros.service;
 
 import com.squaddois.centralerros.dto.ErrorDTO;
+import com.squaddois.centralerros.dto.ErrorReducedDTO;
 import com.squaddois.centralerros.mapper.ErrorMapper;
 import com.squaddois.centralerros.entity.Environment;
 import com.squaddois.centralerros.entity.Error;
@@ -26,19 +27,19 @@ public class ErrorService {
                 new ObjectNotFoundException("Error not found", Error.class.getName())));
     }
 
-    public List<ErrorDTO> findAllErrors() {
-        return ErrorMapper.toListErrorDTO(errorRepository.findAll());
+    public List<ErrorReducedDTO> findAllErrors() {
+        return ErrorMapper.toListErrorReducedDTO(errorRepository.findAll());
     }
 
-    public List<ErrorDTO> findErrorByEnviroment(Environment environment) {
-        return ErrorMapper.toListErrorDTO(errorRepository.findErrorsByEnvironment(environment));
+    public List<ErrorReducedDTO> findErrorsByEnviroment(Environment environment) {
+        return ErrorMapper.toListErrorReducedDTO(errorRepository.findErrorsByEnvironment(environment));
     }
-    public List<ErrorDTO> findErrorsByArchived(Boolean archived) {
-        return ErrorMapper.toListErrorDTO(errorRepository.findErrorsByArchived(archived));
+    public List<ErrorReducedDTO> findErrorsByArchived(Boolean archived) {
+        return ErrorMapper.toListErrorReducedDTO(errorRepository.findErrorsByArchived(archived));
     }
 
-    public List<ErrorDTO> findErrorsByEnvironmentAndArchived(Environment environment, Boolean archived) {
-        return ErrorMapper.toListErrorDTO(errorRepository.findErrorsByEnvironmentAndArchived(environment, archived));
+    public List<ErrorReducedDTO> findErrorsByEnvironmentAndArchived(Environment environment, Boolean archived) {
+        return ErrorMapper.toListErrorReducedDTO(errorRepository.findErrorsByEnvironmentAndArchived(environment, archived));
     }
 
     public void saveError(ErrorDTO errorDTO) {
