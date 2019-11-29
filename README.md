@@ -1,8 +1,34 @@
-# Central de Erros SQUAD 2
+# Central de Erros - SQUAD 2
 
-## Membros
-- Luiz
-- Gustavo
-- Rafael
-- Bruno
-- Well
+### Visão Geral
+
+Este é um projeto final do programa Aceleradev - Java promovido pela [Codenation](https://www.codenation.dev/). Este projeto é basicamente uma API Rest desenvolvida com Spring-Boot onde foram implementados os seguintes requisitos:
+
+* Criação de endpoints para serem utilizados pelo frontend da aplicação;
+* Criação de endpoints que serão utilizados para armazenamento dos erros em um banco de dados relacional;
+* Permissão de acesso aos endpoints apenas com tokens de autenticação válidos.
+
+### Detalhes da implementação
+Neste projeto, as principais tecnologias utilizadas foram:
+* Spring-Boot: para implementação do padrão MVC;
+* H2: como sistema de gerenciamento de banco de dados relacional;
+* Spring-Security e OAuth2: para implementação de autenticação com geração de tokens;
+* Swagger: para criação da documentação do backend da API;
+* Maven: para gerenciamento do ciclo de build da aplicação.
+
+
+### Instalação
+Com o terminal na pasta raiz do projeto digite:
+```
+mvn clean install 
+```
+em seguida:
+```
+cd target
+java -jar [nome do arquivo].jar
+```
+
+
+#### Documentação:
+
+A documentação gerada pelo Swagger se encontra disponível em [documentação](https://localhost:8080/swagger-ui.html)
