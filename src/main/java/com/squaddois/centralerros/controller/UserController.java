@@ -1,5 +1,6 @@
 package com.squaddois.centralerros.controller;
 
+import com.squaddois.centralerros.dto.UserLoginDTO;
 import com.squaddois.centralerros.entity.User;
 import com.squaddois.centralerros.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,4 +50,15 @@ public class UserController {
         userService.deleteUser(id);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/login")
+    public ResponseEntity<Void> loginUser(@Valid @RequestBody UserLoginDTO userLoginDTO) {
+        User user = userService.findUserByEmail(userLoginDTO.getEmail());
+        if (user.getPassword() == userLoginDTO.getPassword()) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.noContent().build();
+        }
+    }
+
 }

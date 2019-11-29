@@ -24,6 +24,9 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(() ->
                 new ObjectNotFoundException("User not found", User.class.getName()));
     }
+    public User findUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 
     public List<User> findAllUsers() {
         return userRepository.findAll();
