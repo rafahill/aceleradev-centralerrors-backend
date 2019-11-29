@@ -1,20 +1,22 @@
 package com.squaddois.centralerros.dto;
 
 import com.squaddois.centralerros.entity.User;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
-public class UserCustomDTO implements UserDetails {
+@Data
+public class UserDetailsDTO implements UserDetails {
 
-    private String login;
-    private String senha;
+    private String email;
+    private String password;
 
-    public UserCustomDTO(User user) {
-        this.login = user.getEmail();
-        this.senha = user.getPassword();
+    public UserDetailsDTO(User user) {
+        this.email = user.getEmail();
+        this.password = user.getPassword();
     }
 
     @Override
@@ -23,13 +25,13 @@ public class UserCustomDTO implements UserDetails {
     }
 
     @Override
-    public String getPassword() {
-        return senha;
+    public String getUsername() {
+        return email;
     }
 
     @Override
-    public String getUsername() {
-        return login;
+    public String getPassword() {
+        return password;
     }
 
     @Override

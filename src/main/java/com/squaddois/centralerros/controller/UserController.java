@@ -1,6 +1,6 @@
 package com.squaddois.centralerros.controller;
 
-import com.squaddois.centralerros.dto.UserDTO;
+import com.squaddois.centralerros.entity.User;
 import com.squaddois.centralerros.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,20 +27,20 @@ public class UserController {
     }
 
     @GetMapping("/findAll")
-    public ResponseEntity<List<UserDTO>> findAllUsers() {
+    public ResponseEntity<List<User>> findAllUsers() {
         return new ResponseEntity<>(userService.findAllUsers(), HttpStatus.OK);
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Void> saveUser(@Valid @RequestBody UserDTO userDTO) {
-        userService.saveUser(userDTO);
+    public ResponseEntity<Void> saveUser(@Valid @RequestBody User user) {
+        userService.saveUser(user);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> updateUser(@PathVariable Long id,@Valid @RequestBody UserDTO userDTO) {
-        userDTO.setId(id);
-        userService.saveUser(userDTO);
+    public ResponseEntity<Void> updateUser(@PathVariable Long id,@Valid @RequestBody User user) {
+        user.setId(id);
+        userService.saveUser(user);
         return ResponseEntity.ok().build();
     }
 
