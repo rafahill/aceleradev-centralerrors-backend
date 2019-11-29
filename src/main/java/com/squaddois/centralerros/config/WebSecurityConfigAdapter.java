@@ -1,6 +1,6 @@
 package com.squaddois.centralerros.config;
 
-import com.squaddois.centralerros.dto.UserCustomDTO;
+import com.squaddois.centralerros.dto.UserDetailsDTO;
 import com.squaddois.centralerros.entity.User;
 import com.squaddois.centralerros.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,12 +32,12 @@ public class WebSecurityConfigAdapter extends WebSecurityConfigurerAdapter {
             User user = new User();
             user.setEmail("admin@admin.com");
             user.setPassword(encoder.passwordEncoder().encode("admin"));
-            user.setName("Admin");
-            user.setLastName("Teste");
+            user.setName("admin");
+            user.setLastName("admin");
             userRepository.save(user);
         }
 
-        builder.userDetailsService(email -> new UserCustomDTO(userRepository.findByEmail(email)))
+        builder.userDetailsService(email -> new UserDetailsDTO(userRepository.findByEmail(email)))
                 .passwordEncoder(encoder.passwordEncoder());
     }
 

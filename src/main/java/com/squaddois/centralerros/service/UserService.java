@@ -1,8 +1,6 @@
 package com.squaddois.centralerros.service;
 
 import com.squaddois.centralerros.config.Encoder;
-import com.squaddois.centralerros.dto.UserDTO;
-import com.squaddois.centralerros.mapper.UserMapper;
 import com.squaddois.centralerros.entity.User;
 import com.squaddois.centralerros.repository.UserRepository;
 import org.hibernate.ObjectNotFoundException;
@@ -22,26 +20,26 @@ public class UserService {
         this.encoder = encoder;
     }
 
-    public UserDTO findUser(Long id) {
-        return UserMapper.toUserDTO(userRepository.findById(id).orElseThrow(() ->
-                new ObjectNotFoundException("User not found", User.class.getName())));
+    public User findUser(Long id) {
+        return userRepository.findById(id).orElseThrow(() ->
+                new ObjectNotFoundException("User not found", User.class.getName()));
     }
 
-    public List<UserDTO> findAllUsers() {
-        return UserMapper.toListUserDTO(userRepository.findAll());
+    public List<User> findAllUsers() {
+        return userRepository.findAll();
     }
 
-    public void saveUser(UserDTO userDTO) {
-        userDTO.setPassword(encoder.passwordEncoder().encode(userDTO.getPassword()));
-        userRepository.save(UserMapper.toUser(userDTO));
+    public void saveUser(User user) {
+        user.setPassword(encoder.passwordEncoder().encode(user.getPassword()));
+        userRepository.save(user);
     }
 
-    public void updateUser(UserDTO userDTO) {
-        userRepository.save(UserMapper.toUser(userDTO));
+    public void updateUser(User user) {
+        userRepository.save(user);
     }
 
     public void deleteUser(Long id) {
-        UserDTO userDTO = findUser(id);
-        userRepository.delete(UserMapper.toUser(userDTO));
+        User user = findUser(id);
+        userRepository.delete(user);
     }
 }

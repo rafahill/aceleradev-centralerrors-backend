@@ -1,8 +1,7 @@
 package com.squaddois.centralerros.controller;
 
-import com.squaddois.centralerros.dto.ErrorDTO;
-import com.squaddois.centralerros.dto.ErrorReducedDTO;
 import com.squaddois.centralerros.entity.Environment;
+import com.squaddois.centralerros.entity.Error;
 import com.squaddois.centralerros.service.ErrorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,36 +27,36 @@ public class ErrorController {
     }
 
     @GetMapping("/findAll")
-    public ResponseEntity<List<ErrorReducedDTO>> findAllErrors() {
+    public ResponseEntity<List<Error>> findAllErrors() {
         return new ResponseEntity<>(errorService.findAllErrors(), HttpStatus.OK);
     }
 
     @GetMapping("/findAllByEnvironment/{environment}")
-    public ResponseEntity<List<ErrorReducedDTO>> findAllErrorsByEnvironment(@PathVariable Environment environment) {
-        return new ResponseEntity<>(errorService.findErrorsByEnviroment(environment), HttpStatus.OK);
+    public ResponseEntity<List<Error>> findAllErrorsByEnvironment(@PathVariable Environment environment) {
+        return new ResponseEntity<>(errorService.findErrorByEnviroment(environment), HttpStatus.OK);
     }
 
     @GetMapping("/findAllByArchived/{archived}")
-    public ResponseEntity<List<ErrorReducedDTO>> findAllErrorsByArchived(@PathVariable Boolean archived) {
+    public ResponseEntity<List<Error>> findAllErrorsByArchived(@PathVariable Boolean archived) {
         return new ResponseEntity<>(errorService.findErrorsByArchived(archived), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/findErrorsBy", params = {"environment", "archived"})
-    public ResponseEntity<List<ErrorReducedDTO>> findErrorsBy(@RequestParam Environment environment, @RequestParam Boolean archived) {
+    public ResponseEntity<List<Error>> findErrorsBy(@RequestParam Environment environment, @RequestParam Boolean archived) {
         return new ResponseEntity<>(errorService.findErrorsByEnvironmentAndArchived(environment, archived), HttpStatus.OK);
     }
 
 
     @PostMapping("/save")
-    public ResponseEntity<Void> saveError(@Valid @RequestBody ErrorDTO errorDTO) {
-        errorService.saveError(errorDTO);
+    public ResponseEntity<Void> saveError(@Valid @RequestBody Error error) {
+        errorService.saveError(error);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> updateError(@PathVariable Long id,@Valid @RequestBody ErrorDTO errorDTO) {
-        errorDTO.setId(id);
-        errorService.saveError(errorDTO);
+    public ResponseEntity<Void> updateError(@PathVariable Long id,@Valid @RequestBody Error error) {
+        error.setId(id);
+        errorService.saveError(error);
         return ResponseEntity.ok().build();
     }
 
