@@ -33,6 +33,13 @@ public class ErrorService {
     public List<ErrorDTO> findErrorByEnviroment(Environment environment) {
         return ErrorMapper.toListErrorDTO(errorRepository.findErrorByEnvironment(environment));
     }
+    public List<ErrorDTO> findErrorsByArchived(Boolean archived) {
+        return ErrorMapper.toListErrorDTO(errorRepository.findErrorsByArchived(archived));
+    }
+
+    public List<ErrorDTO> findErrorsByEnvironmentAndArchived(Environment environment, Boolean archived) {
+        return ErrorMapper.toListErrorDTO(errorRepository.findErrorsByEnvironmentAndArchived(environment, archived));
+    }
 
     public void saveError(ErrorDTO errorDTO) {
         errorRepository.save(ErrorMapper.toError(errorDTO));

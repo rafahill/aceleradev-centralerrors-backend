@@ -2,10 +2,7 @@ package com.squaddois.centralerros.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -24,6 +21,8 @@ public class Error extends BaseEntity {
     private ErrorType errorType;
     @NotNull
     private Environment environment;
+    @NotNull
+    private Boolean archived = false;
 
     public Error() {
     }

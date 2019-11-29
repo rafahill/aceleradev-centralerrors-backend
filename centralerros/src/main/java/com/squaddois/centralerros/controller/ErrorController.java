@@ -30,10 +30,22 @@ public class ErrorController {
     public ResponseEntity<List<ErrorDTO>> findAllErrors() {
         return new ResponseEntity<>(errorService.findAllErrors(), HttpStatus.OK);
     }
-    @GetMapping("/findByEnvironment/{environment}")
+
+    @GetMapping("/findAllByEnvironment/{environment}")
     public ResponseEntity<List<ErrorDTO>> findAllErrorsByEnvironment(@PathVariable Environment environment) {
         return new ResponseEntity<>(errorService.findErrorByEnviroment(environment), HttpStatus.OK);
     }
+
+    @GetMapping("/findAllByArchived/{archived}")
+    public ResponseEntity<List<ErrorDTO>> findAllErrorsByArchived(@PathVariable Boolean archived) {
+        return new ResponseEntity<>(errorService.findErrorsByArchived(archived), HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/findErrorsBy", params = {"environment", "archived"})
+    public ResponseEntity<List<ErrorDTO>> findErrorsBy(@RequestParam Environment environment, @RequestParam Boolean archived) {
+        return new ResponseEntity<>(errorService.findErrorsByEnvironmentAndArchived(environment, archived), HttpStatus.OK);
+    }
+
 
     @PostMapping("/save")
     public ResponseEntity<Void> saveError(@Valid @RequestBody ErrorDTO errorDTO) {

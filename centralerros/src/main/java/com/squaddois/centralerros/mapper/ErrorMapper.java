@@ -1,6 +1,7 @@
 package com.squaddois.centralerros.mapper;
 
 import com.squaddois.centralerros.dto.ErrorDTO;
+import com.squaddois.centralerros.dto.ErrorReducedDTO;
 import com.squaddois.centralerros.entity.Error;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class ErrorMapper {
         errorDTO.setHostname(error.getHostname());
         errorDTO.setTitle(error.getTitle());
         errorDTO.setCreatedAt(error.getCreatedAt());
+        errorDTO.setArchived(error.getArchived());
         return errorDTO;
     }
     public static Error toError(ErrorDTO errorDTO) {
@@ -32,6 +34,24 @@ public class ErrorMapper {
         error.setHostname(errorDTO.getHostname());
         error.setTitle(errorDTO.getTitle());
         error.setCreatedAt(errorDTO.getCreatedAt());
+        error.setArchived(errorDTO.getArchived());
+        return error;
+    }
+
+    public static ErrorReducedDTO toErrorReducedDTO(Error error) {
+        ErrorReducedDTO errorReducedDTO = new ErrorReducedDTO();
+        errorReducedDTO.setId(error.getId());
+        errorReducedDTO.setErrorType(error.getErrorType());
+        errorReducedDTO.setTitle(error.getTitle());
+        errorReducedDTO.setCreatedAt(error.getCreatedAt());
+        return errorReducedDTO;
+    }
+    public static Error fromReducedDTOtoError(ErrorReducedDTO errorReducedDTO) {
+        Error error = new Error();
+        error.setId(errorReducedDTO.getId());
+        error.setErrorType(errorReducedDTO.getErrorType());
+        error.setTitle(errorReducedDTO.getTitle());
+        error.setCreatedAt(errorReducedDTO.getCreatedAt());
         return error;
     }
 
