@@ -44,6 +44,13 @@ public class ErrorService {
         errorRepository.save(error);
     }
 
+    public Error setArchived(Long id, Boolean archived) {
+        Error error = errorRepository.findById(id).get();
+        error.setArchived(archived);
+        errorRepository.save(error);
+        return error;
+    }
+
     public void deleteError(Long id) {
         Error error = findError(id);
         errorRepository.delete(error);
