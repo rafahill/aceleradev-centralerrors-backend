@@ -41,11 +41,9 @@ public class ErrorController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Void> updateError(@PathVariable Long id,@Valid @RequestBody Error error) {
-        error.setId(id);
-        errorService.saveError(error);
-        return ResponseEntity.ok().build();
+    @PutMapping("/{id}/setArchived/{archived}")
+    public Error setArchived(@PathVariable Long id, @PathVariable Boolean archived) {
+        return errorService.setArchived(id, archived);
     }
 
     @DeleteMapping("/{id}")
