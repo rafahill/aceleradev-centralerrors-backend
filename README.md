@@ -11,9 +11,7 @@ Este é um projeto final do programa Aceleradev - Java promovido pela [Codenatio
 ### Detalhes da implementação
 Neste projeto, as principais tecnologias utilizadas foram:
 * Spring-Boot: para implementação do padrão MVC;
-* H2: como sistema de gerenciamento de banco de dados relacional;
-* Spring-Security e OAuth2: para implementação de autenticação com geração de tokens;
-* Swagger: para criação da documentação do backend da API;
+* Auth0: como sistema de gerenciamento de usuarios e autenticação;
 * Maven: para gerenciamento do ciclo de build da aplicação.
 
 
@@ -27,8 +25,3 @@ em seguida:
 cd target
 java -jar [nome do arquivo].jar
 ```
-
-
-### Documentação
-
-Após a instalação, a documentação estará disponível em https://localhost:8080/swagger-ui.html
