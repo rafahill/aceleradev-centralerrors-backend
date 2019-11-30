@@ -26,6 +26,8 @@ public class Error extends BaseEntity {
     private Environment environment;
     @NotNull
     private boolean archived;
+    @NotNull
+    private String error_code;
 
     public Error() {
     }
