@@ -36,8 +36,12 @@ public class ErrorService {
         return errorRepository.findAllByArchivedFalse();
     }
 
-    public List<Error> findAllByErrorByEnviroment(String environment) {
-        return errorRepository.findAllByErrorByEnvironment(environment);
+    public List<Error> findAllByEnvironmentAndArchivedFalse(String environment) {
+        return errorRepository.findAllByEnvironmentAndArchivedFalse(environment);
+    }
+
+    public List<Error> findAllByEnvironmentAndArchivedTrue(String environment) {
+        return errorRepository.findAllByEnvironmentAndArchivedTrue(environment);
     }
 
     public void saveError(Error error) {
