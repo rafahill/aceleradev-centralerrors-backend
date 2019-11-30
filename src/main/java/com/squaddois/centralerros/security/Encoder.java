@@ -1,4 +1,4 @@
-package com.squaddois.centralerros.config;
+package com.squaddois.centralerros.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

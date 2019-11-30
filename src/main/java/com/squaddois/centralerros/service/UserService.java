@@ -1,6 +1,6 @@
 package com.squaddois.centralerros.service;
 
-import com.squaddois.centralerros.config.Encoder;
+import com.squaddois.centralerros.security.Encoder;
 import com.squaddois.centralerros.entity.User;
 import com.squaddois.centralerros.repository.UserRepository;
 import org.hibernate.ObjectNotFoundException;

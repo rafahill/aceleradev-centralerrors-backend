@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/error")
+@RequestMapping("/api/error")
 public class ErrorController {
     private final ErrorService errorService;
 
