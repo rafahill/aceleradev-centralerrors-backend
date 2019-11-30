@@ -21,9 +21,8 @@ public class Error extends BaseEntity {
     @NotNull
     @Enumerated(EnumType.STRING)
     private ErrorType errorType;
-    @Enumerated(EnumType.STRING)
     @NotNull
-    private Environment environment;
+    private String environment;
     @NotNull
     private boolean archived;
     @NotNull

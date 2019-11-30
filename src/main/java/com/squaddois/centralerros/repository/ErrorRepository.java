@@ -13,7 +13,9 @@ import java.util.List;
 public interface ErrorRepository extends JpaRepository<Error,Long> {
 
     @Query("SELECT t.environment FROM Error t where t.environment = :environment")
-    List<Error> findErrorByEnvironment(@Param("environment") Environment environment);
+    List<Error> findAllByErrorByEnvironment(@Param("environment") String environment);
 
     List<Error> findAllByArchivedTrue();
+
+    List<Error> findAllByArchivedFalse();
 }
