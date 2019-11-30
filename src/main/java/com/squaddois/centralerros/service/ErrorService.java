@@ -28,6 +28,10 @@ public class ErrorService {
         return errorRepository.findAll();
     }
 
+    public List<Error> findAllByArchivedTrue() {
+        return errorRepository.findAllByArchivedTrue();
+    }
+
     public List<Error> findErrorByEnviroment(Environment environment) {
         return errorRepository.findErrorByEnvironment(environment);
     }

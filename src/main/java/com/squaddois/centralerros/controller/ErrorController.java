@@ -30,6 +30,12 @@ public class ErrorController {
     public ResponseEntity<List<Error>> findAllErrors() {
         return new ResponseEntity<>(errorService.findAllErrors(), HttpStatus.OK);
     }
+
+    @GetMapping("/findAllByArchivedTrue")
+    public ResponseEntity<List<Error>> FindByArchived() {
+        return new ResponseEntity<>(errorService.findAllByArchivedTrue(), HttpStatus.OK);
+    }
+
     @GetMapping("/findByEnvironment/{environment}")
     public ResponseEntity<List<Error>> findAllErrorsByEnvironment(@PathVariable Environment environment) {
         return new ResponseEntity<>(errorService.findErrorByEnviroment(environment), HttpStatus.OK);
