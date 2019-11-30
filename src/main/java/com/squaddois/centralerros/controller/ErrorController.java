@@ -31,21 +31,25 @@ public class ErrorController {
         return new ResponseEntity<>(errorService.findAllErrors(), HttpStatus.OK);
     }
 
-    @GetMapping("/findAllByEnvironment/{environment}")
-    public ResponseEntity<List<Error>> findAllErrorsByEnvironment(@PathVariable Environment environment) {
-        return new ResponseEntity<>(errorService.findErrorByEnviroment(environment), HttpStatus.OK);
+    @GetMapping("/findAllByArchivedTrue")
+    public ResponseEntity<List<Error>> FindByArchivedTrue() {
+        return new ResponseEntity<>(errorService.findAllByArchivedTrue(), HttpStatus.OK);
     }
 
-    @GetMapping("/findAllByArchived/{archived}")
-    public ResponseEntity<List<Error>> findAllErrorsByArchived(@PathVariable Boolean archived) {
-        return new ResponseEntity<>(errorService.findErrorsByArchived(archived), HttpStatus.OK);
+    @GetMapping("/findAllByArchivedFalse")
+    public ResponseEntity<List<Error>> FindByArchivedFalse() {
+        return new ResponseEntity<>(errorService.findAllByArchivedFalse(), HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/findErrorsBy", params = {"environment", "archived"})
-    public ResponseEntity<List<Error>> findErrorsBy(@RequestParam Environment environment, @RequestParam Boolean archived) {
-        return new ResponseEntity<>(errorService.findErrorsByEnvironmentAndArchived(environment, archived), HttpStatus.OK);
+    @GetMapping("/findAllByEnvironmentAndByArchivedFalse/{environment}")
+    public ResponseEntity<List<Error>> findAllByEnvironmentAndByArchivedFalse(@PathVariable String environment) {
+        return new ResponseEntity<>(errorService.findAllByEnvironmentAndArchivedFalse(environment), HttpStatus.OK);
     }
 
+    @GetMapping("/findAllByEnvironmentAndByArchivedTrue/{environment}")
+    public ResponseEntity<List<Error>> findAllByEnvironmentAndByArchivedTrue(@PathVariable String environment) {
+        return new ResponseEntity<>(errorService.findAllByEnvironmentAndArchivedTrue(environment), HttpStatus.OK);
+    }
 
     @PostMapping("/save")
     public ResponseEntity<Void> saveError(@Valid @RequestBody Error error) {
@@ -53,11 +57,9 @@ public class ErrorController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Void> updateError(@PathVariable Long id,@Valid @RequestBody Error error) {
-        error.setId(id);
-        errorService.saveError(error);
-        return ResponseEntity.ok().build();
+    @PutMapping("/{id}/setArchived/{archived}")
+    public Error setArchived(@PathVariable Long id, @PathVariable Boolean archived) {
+        return errorService.setArchived(id, archived);
     }
 
     @DeleteMapping("/{id}")

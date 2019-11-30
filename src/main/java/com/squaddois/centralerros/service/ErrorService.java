@@ -28,15 +28,20 @@ public class ErrorService {
         return errorRepository.findAll();
     }
 
-    public List<Error> findErrorByEnviroment(Environment environment) {
-        return errorRepository.findErrorsByEnvironment(environment);
+    public List<Error> findAllByArchivedTrue() {
+        return errorRepository.findAllByArchivedTrue();
     }
-    public List<Error> findErrorsByArchived(Boolean archived) {
-        return errorRepository.findErrorsByArchived(archived);
-}
 
-    public List<Error> findErrorsByEnvironmentAndArchived(Environment environment, Boolean archived) {
-        return errorRepository.findErrorsByEnvironmentAndArchived(environment, archived);
+    public List<Error> findAllByArchivedFalse() {
+        return errorRepository.findAllByArchivedFalse();
+    }
+
+    public List<Error> findAllByEnvironmentAndArchivedFalse(String environment) {
+        return errorRepository.findAllByEnvironmentAndArchivedFalse(environment);
+    }
+
+    public List<Error> findAllByEnvironmentAndArchivedTrue(String environment) {
+        return errorRepository.findAllByEnvironmentAndArchivedTrue(environment);
     }
 
     public void saveError(Error error) {
@@ -45,6 +50,13 @@ public class ErrorService {
 
     public void updateError(Error error) {
         errorRepository.save(error);
+    }
+
+    public Error setArchived(Long id, Boolean archived) {
+        Error error = errorRepository.findById(id).get();
+        error.setArchived(archived);
+        errorRepository.save(error);
+        return error;
     }
 
     public void deleteError(Long id) {
