@@ -1,7 +1,5 @@
 package com.squaddois.centralerros.service;
 
-import com.squaddois.centralerros.dto.ErrorDTO;
-import com.squaddois.centralerros.mapper.ErrorMapper;
 import com.squaddois.centralerros.entity.Environment;
 import com.squaddois.centralerros.entity.Error;
 import com.squaddois.centralerros.repository.ErrorRepository;
@@ -21,29 +19,29 @@ public class ErrorService {
         this.errorRepository = errorRepository;
     }
 
-    public ErrorDTO findError(Long id) {
-        return ErrorMapper.toErrorDTO(errorRepository.findById(id).orElseThrow(() ->
-                new ObjectNotFoundException("Error not found", Error.class.getName())));
+    public Error findError(Long id) {
+        return errorRepository.findById(id).orElseThrow(() ->
+                new ObjectNotFoundException("Error not found", Error.class.getName()));
     }
 
-    public List<ErrorDTO> findAllErrors() {
-        return ErrorMapper.toListErrorDTO(errorRepository.findAll());
+    public List<Error> findAllErrors() {
+        return errorRepository.findAll();
     }
 
-    public List<ErrorDTO> findErrorByEnviroment(Environment environment) {
-        return ErrorMapper.toListErrorDTO(errorRepository.findErrorByEnvironment(environment));
+    public List<Error> findErrorByEnviroment(Environment environment) {
+        return errorRepository.findErrorByEnvironment(environment);
     }
 
-    public void saveError(ErrorDTO errorDTO) {
-        errorRepository.save(ErrorMapper.toError(errorDTO));
+    public void saveError(Error error) {
+        errorRepository.save(error);
     }
 
-    public void updateError(ErrorDTO errorDTO) {
-        errorRepository.save(ErrorMapper.toError(errorDTO));
+    public void updateError(Error error) {
+        errorRepository.save(error);
     }
 
     public void deleteError(Long id) {
-        ErrorDTO errorDTO = findError(id);
-        errorRepository.delete(ErrorMapper.toError(errorDTO));
+        Error error = findError(id);
+        errorRepository.delete(error);
     }
 }
