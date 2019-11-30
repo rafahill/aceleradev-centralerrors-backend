@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 public class ErrorDTO {
     private Long id;
     private String hostname;
+    private String errorCode;
     private String title;
     private String details;
     private ErrorType errorType;

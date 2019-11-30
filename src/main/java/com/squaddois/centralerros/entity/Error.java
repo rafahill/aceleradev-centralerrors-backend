@@ -15,6 +15,8 @@ public class Error extends BaseEntity {
     @NotEmpty
     private String hostname;
     @NotEmpty
+    private String errorCode;
+    @NotEmpty
     private String title;
     @Column(length = 1000)
     private String details;
