@@ -32,13 +32,18 @@ public class ErrorController {
     }
 
     @GetMapping("/findAllByArchivedTrue")
-    public ResponseEntity<List<Error>> FindByArchived() {
+    public ResponseEntity<List<Error>> FindByArchivedTrue() {
         return new ResponseEntity<>(errorService.findAllByArchivedTrue(), HttpStatus.OK);
     }
 
-    @GetMapping("/findByEnvironment/{environment}")
-    public ResponseEntity<List<Error>> findAllErrorsByEnvironment(@PathVariable Environment environment) {
-        return new ResponseEntity<>(errorService.findErrorByEnviroment(environment), HttpStatus.OK);
+    @GetMapping("/findAllByArchivedFalse")
+    public ResponseEntity<List<Error>> FindByArchivedFalse() {
+        return new ResponseEntity<>(errorService.findAllByArchivedFalse(), HttpStatus.OK);
+    }
+
+    @GetMapping("/findAllByEnvironment/{environment}")
+    public ResponseEntity<List<Error>> findAllErrorsByEnvironment(@PathVariable String environment) {
+        return new ResponseEntity<>(errorService.findAllByErrorByEnviroment(environment), HttpStatus.OK);
     }
 
     @PostMapping("/save")
