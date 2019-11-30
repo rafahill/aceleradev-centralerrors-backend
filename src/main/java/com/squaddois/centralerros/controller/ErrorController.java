@@ -49,7 +49,7 @@ public class ErrorController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteError(@PathVariable Long id) {
         errorService.deleteError(id);
         return ResponseEntity.ok().build();
     }
